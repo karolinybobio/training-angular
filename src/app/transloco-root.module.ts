@@ -1,24 +1,23 @@
-import {
-  provideTransloco,
-  TranslocoModule
-} from '@ngneat/transloco';
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
+import { TranslocoModule, TRANSLOCO_CONFIG, translocoConfig, TRANSLOCO_LOADER } from '@ngneat/transloco';
 import { TranslocoHttpLoader } from './transloco-loader';
-import { environment } from '../../Users/Administrador/Downloads/testando-transloco/angular-transloco-study/src/environments/environment';
 
 @NgModule({
-  exports: [ TranslocoModule ],
+  exports: [TranslocoModule],
   providers: [
-      provideTransloco({
-        config: {
-          availableLangs: ['pt'],
-          defaultLang: 'pt',
-          // Remove this option if your application doesn't support changing language in runtime.
-          reRenderOnLangChange: true,
-          prodMode: !isDevMode(),
-        },
-        loader: TranslocoHttpLoader
-      }),
-  ],
+    {
+      provide: TRANSLOCO_CONFIG,
+      useValue: translocoConfig({
+        availableLangs: ['pt'],
+        defaultLang: 'pt',
+        prodMode: !isDevMode(),
+      })
+    },
+    {
+      provide: TRANSLOCO_LOADER,
+      useClass: TranslocoHttpLoader
+    }
+  ]
 })
 export class TranslocoRootModule {}
+
