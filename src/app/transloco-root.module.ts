@@ -10,6 +10,8 @@ import { TranslocoHttpLoader } from './transloco-loader';
       useValue: translocoConfig({
         availableLangs: ['pt'],
         defaultLang: 'pt',
+        reRenderOnLangChange: true,
+
         prodMode: !isDevMode(),
       })
     },

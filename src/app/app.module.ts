@@ -12,8 +12,7 @@ import { TranslocoRootModule } from './transloco-root.module';
   declarations: [
     AppComponent,
     DashboardComponent,
-    DashboardCardComponent,
-    DashboardComponent
+    DashboardCardComponent
   ],
   imports: [
     BrowserModule,

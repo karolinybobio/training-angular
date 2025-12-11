@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-transloco-study';
+
+  constructor(private translocoService: TranslocoService) {}
+
+  changeLang(lang: string){
+    this.translocoService.setActiveLang(lang);
+  }
 }
